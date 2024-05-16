@@ -20,13 +20,13 @@ resource "aws_subnet" "private"{
 	}
 }
 
-data "aws_subnet" "sid"{
+data "aws_subnets" "sid"{
 	filter{
-		name = "vpc_id"
+		name = "vpc-id"
 		values = [aws_vpc.main.id]
 	}
 	
 	tags = {
-		Name = "Public"
+		Tier = "Public"
 	}
 }
