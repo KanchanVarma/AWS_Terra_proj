@@ -1,3 +1,4 @@
 resource "aws_eip" "myeip" {
-	vpc = true
+	//instance = aws_instance.web.id
+	domain = "vpc"
 }

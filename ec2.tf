@@ -3,7 +3,7 @@ resource "aws_instance" "web"{
 	instance_type 	= "t2.micro"
 	key_name 		= "aws-login"
 	subnet_id 		= aws_subnet.public[count.index].id
-	vpc_security_group_ids = [aws_security_group.allow-tls.id]
+	vpc_security_group_ids = [aws_security_group.allow_tls.id]
 	associate_public_ip_address = true
 	count 			= 2
 	

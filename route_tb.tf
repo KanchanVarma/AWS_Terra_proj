@@ -1,7 +1,7 @@
 resource "aws_route_table" "rtb"{
 	vpc_id 	= aws_vpc.main.id
 	
-	routes{
+	route{
 		cidr_block = "0.0.0.0/0"
 		gateway_id = aws_internet_gateway.igw.id
 	}
@@ -18,13 +18,20 @@ resource "aws_route_table_association" "a"{
 	count = 2
 }
 
+/*
+resource "aws_route_table_association" "b"{
+	subnet_id 		= aws_subnet.public[count.index].id
+	route_table_id 	= aws_default_route_table.dfrtb.id
+	index 			= 2
+}
 
 // Adding NAT Gateway to default main route table
 
+
 resource "aws_default_route_table" "dfrtb"{
-	vpc_id = aws_vpc.main.id
+	default_route_table_id = aws_vpc.main.default_route_table_id
 	
-	routes {
+	route {
 		cidr_block = "0.0.0.0/0"
 		gateway_id = aws_nat_gateway.natgw.id
 	}
@@ -33,3 +40,5 @@ resource "aws_default_route_table" "dfrtb"{
 		Name = "dfrtb"
 	}
 }
+
+*/
