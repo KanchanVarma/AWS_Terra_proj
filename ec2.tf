@@ -12,14 +12,14 @@ resource "aws_instance" "web"{
 	}
 	
 	provisioner "file" {
-		source = "./aws-login.pem"
+		source = "aws-login.pem"
 		destination = "home/ec2-user/aws-login.pem"
 		
 		connection {
 			type = "ssh"
 			host = self.public_ip
 			user = "ec2-user"
-			private_key = "${file("./aws-login.pem")}"
+			private_key = "${file("aws-login.pem")}"
 		}
 	}
 }
@@ -27,7 +27,7 @@ resource "aws_instance" "web"{
 resource "aws_instance" "db"{
 	ami 			= "ami-08df646e18b182346" 
 	instance_type	= "t2.micro"
-	key_name 		= "./aws_login"
+	key_name 		= "aws_login"
 	subnet_id 		= aws_subnet.private.id
 	vpc_security_group_ids = [aws_security_group.allow_tls_db.id]
 	
