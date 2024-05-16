@@ -23,7 +23,7 @@ resource "aws_subnet" "private"{
 data "aws_subnet" "sid"{
 	filter{
 		name = "vpc_id"
-		values = aws_vpc.main.id
+		values = [aws_vpc.main.id]
 	}
 	
 	tags = {
